@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gandard Bank - Sign In</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(to right, #0057b7, #0073e6);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header img {
+      height: 100px;
+    }
+
+    .contact-us {
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .main {
+      display: flex;
+      flex: 1;
+    }
+
+    .left-side {
+  flex: 1;
+  background: url("images/given.jpg") center center/cover no-repeat;
+  position: relative;
+  color: white;
+}
+
+.left-side h1 {
+  position: absolute;
+  bottom: 60px; /* Move further down by increasing this */
+  left: 40px;
+  font-size: 32px;
+  font-weight: normal;
+}
+
+    .right-side {
+      flex: 1;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 60px;
+      text-align: center;
+    }
+
+    .right-side h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .right-side p {
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .buttons a {
+      display: block;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 14px;
+      border-radius: 30px;
+      margin: 10px auto;
+      width: 60%;
+      text-align: center;
+    }
+
+    .signin {
+      background-color: #0033a0;
+      color: white;
+    }
+
+    .register {
+      border: 2px solid #0033a0;
+      color: #0033a0;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .footer-note a {
+      color: #0033a0;
+      text-decoration: none;
+    }@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .left-side,
+  .right-side {
+    flex: none;
+    width: 100%;
+  }
+
+  .left-side {
+    height: 250px; /* Adjust as needed */
+  }
+
+  .left-side h1 {
+    font-size: 24px;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .right-side {
+    padding: 20px;
+  }
+
+  .buttons a {
+    width: 100%;
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="Standard Bank Logo" />
+    <div class="contact-us">Contact us</div>
+  </header>
+
+  <div class="main">
+    <div class="left-side">
+      <h1>Welcome to <br/> Gandard Bank Online Banking</h1>
+    </div>
+
+    <div class="right-side">
+      <h2>Sign in to online banking</h2>
+      <p>If you don’t have an online profile, please register</p>
+
+      <div class="buttons">
+        <a href="layout2.html" class="signin">SIGN IN</a>
+        <a href="register.html" class="register">REGISTER</a>
+      </div>
+
+      <div class="footer-note">
+        By signing in, I agree to the <a href="#">T&Cs</a><br/>
+        Last updated in June 2025
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gandard Bank - Make a Payment</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      margin: 0;
+    }
+
+    header {
+      background: linear-gradient(to right, #0057b7, #0073e6);
+      color: white;
+      padding: 16px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-bar {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-bar img {
+      height: 70px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 20px;
+      font-weight: bold;
+    }
+
+    .tabs a {
+      color: white;
+      text-decoration: none;
+      padding-bottom: 5px;
+    }
+
+    .tabs a.active {
+      border-bottom: 3px solid white;
+    }
+
+    .user-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .user-actions span {
+      font-weight: bold;
+    }
+
+    nav {
+      background-color: white;
+      padding: 10px 30px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #0033a0;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 30px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #0033a0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    select, input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 14px 24px;
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005bb5;
+    }
+
+    .success-message {
+      display: none;
+      background-color: #e6ffed;
+      color: #228b22;
+      border: 1px solid #a6d8a8;
+      padding: 12px;
+      margin-top: 20px;
+      border-radius: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 14px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f0f4f8;
+      color: #0033a0;
+    }
+
+    td.amount {
+      font-weight: bold;
+      color: #0033a0;
+    }
+
+    .back-button {
+      background-color: transparent;
+      color: #0073e6;
+      font-weight: bold;
+      border: 2px solid #0073e6;
+      margin-bottom: 20px;
+    }
+
+    .back-button:hover {
+      background-color: #e8f0fe;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+      margin: 50px 0 20px;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-bar">
+    <img src="images/logo.png" alt="Logo">
+    <div class="tabs">
+      <a href="#" class="active">My Personal Banking</a>
+      <a href="#">My Business Banking</a>
+    </div>
+  </div>
+  <div class="user-actions">
+    <span id="username">Mulamuleli</span>
+    <a href="index.html" style="color:white;">Sign out</a>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Transact ▾</a>
+    <a href="#">Buy ▾</a>
+    <a href="#">Apply ▾</a>
+    <a href="#">Borrow</a>
+  </div>
+  <div class="nav-links">
+    <a href="#">QuickLinks ▾</a>
+  </div>
+</nav>
+
+<div class="main">
+  <a href="Layout4.html"><button class="back-button">← Back to Dashboard</button></a>
+
+  <div class="card">
+    <h2>Pay a Beneficiary</h2>
+    <form id="paymentForm">
+      <label for="beneficiary">Select beneficiary:</label>
+      <select id="beneficiary" required>
+        <option value="">-- Select --</option>
+        <option value="MOM">MOM</option>
+        <option value="BABY">BABY</option>
+        <option value="MATSHONISE">MATSHONISE</option>
+        <option value="MATSHONISE 2">MATSHONISE 2</option>
+      </select>
+
+      <label for="amount">Amount (R):</label>
+      <input type="number" id="amount" placeholder="e.g. 500" min="1" required>
+
+      <button type="submit">Pay</button>
+    </form>
+    <div class="success-message" id="successMessage">
+      ✅ Payment to <strong><span id="paidTo"></span></strong> successful!
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Payment History</h2>
+    <table id="historyTable">
+      <thead>
+        <tr>
+          <th>Beneficiary</th>
+          <th>Amount Paid (R)</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- JS will populate -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Gandard Bank. All rights reserved.</p>
+</footer>
+
+<script>
+  const form = document.getElementById("paymentForm");
+  const historyTable = document.getElementById("historyTable").getElementsByTagName("tbody")[0];
+  const successMessage = document.getElementById("successMessage");
+  const paidTo = document.getElementById("paidTo");
+
+  // Load existing history
+  document.addEventListener("DOMContentLoaded", () => {
+    const history = JSON.parse(localStorage.getItem("paymentHistory")) || [];
+    history.forEach(({ name, amount, date }) => {
+      const row = historyTable.insertRow();
+      row.innerHTML = `<td>${name}</td><td class="amount">R ${amount}</td><td>${date}</td>`;
+    });
+
+    const user = localStorage.getItem('username');
+    if (user) {
+      document.getElementById('username').textContent = user;
+    }
+  });
+
+  // Handle new payment
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("beneficiary").value;
+    const amount = document.getElementById("amount").value;
+    const date = new Date().toLocaleDateString("en-ZA", {
+      day: "2-digit", month: "long", year: "numeric"
+    });
+
+    const newRow = historyTable.insertRow();
+    newRow.innerHTML = `<td>${name}</td><td class="amount">R ${amount}</td><td>${date}</td>`;
+
+    paidTo.textContent = `${name} (R${amount})`;
+    successMessage.style.display = "block";
+
+    // Save to localStorage
+    const paymentHistory = JSON.parse(localStorage.getItem("paymentHistory")) || [];
+    paymentHistory.push({ name, amount, date });
+    localStorage.setItem("paymentHistory", JSON.stringify(paymentHistory));
+
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
